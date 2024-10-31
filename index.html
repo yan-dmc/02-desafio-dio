@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador de nível de herói</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="icon" type="image/pkm-icon" href="./imagens/icon.png?">
+</head>
+<body>
+    <section class="main">
+        <div class="hero-box">
+            <div class="rank-img"></div>
+            <div class="hero-img">
+                <div class="hero-nametag"></div>
+                <img src="./Imagens/link.gif" alt="link"></div>
+            <div class="hero-reflect"><img src="./Imagens/link.gif" alt="reflect"></div>
+        </div>
+
+        <div class="box">
+            <div class="hero-info">
+                <div class="hero-info-name">
+                    <p class="hero-name">
+                        O‎ ‎ Herói‎ ‎ de‎ ‎ nome‎ ‎ ‎ ‎ 
+                    <input type="text" id="hero-name" placeholder="texto aqui" maxlength="10" 
+                    oninput="this.style.width = this.value ? (this.value.length) + 'ch' : '17.6vh';"></p>
+                </div>
+                <p class="hero-name">
+                    está‎ ‎ no‎ ‎ nível‎ ‎ ‎ ‎ <strong id="hero-level" class="strong"> Ferro </strong>
+                </p>    
+
+                <div class="rank-scroll">
+                    <label for="rank-scroll">Xp do herói - <output id="value"></output></label><br>
+                    <input type="range" id="rank-scroll" name="rank-scroll" min="0" max="10000" value="0" step="1" list="markers" />
+                    <datalist id="markers">
+                        <option value="00000"></option>
+                        <option value="01000"></option>
+                        <option value="02000"></option>
+                        <option value="03000"></option>
+                        <option value="04000"></option>
+                        <option value="05000"></option>
+                        <option value="06000"></option>
+                        <option value="07000"></option>
+                        <option value="08000"></option>
+                        <option value="09000"></option>
+                        <option value="10000"></option>
+                    </datalist>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer">©2024. Designed by YAN</div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
