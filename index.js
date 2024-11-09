@@ -1,61 +1,89 @@
-const value = document.querySelector("#value");
-const input = document.querySelector("#rank-scroll");
-let saidaXP = document.querySelector("#hero-level");
+const vitorias = document.querySelector("#vitorias");
+const derrotas = document.querySelector("#derrotas");
+const total = document.querySelector(".total");
+const saidaRank = document.querySelector(".rank");
+const imagens = document.querySelector("#img-rank");
 
-value.textContent = input.value;
-input.addEventListener("input", (event) => {
-  valor = event.target.value;
-  value.textContent = valor;
+total.textContent = 0;
 
-  let rank, cor;
-  if (0 <= valor && valor < 1000){
-    rank = "Ferro";
-    cor = '#B09F9B';
-  } else if (1000 <= valor && valor < 2000) {
-    rank = "Bronze";
-    cor = '#D08469';
-  } else if (2000 <= valor && valor < 3000) {
-    rank = "Prata";
-    cor = '#C4D0E8';
-  } else if (3000 <= valor && valor < 4000) {
-    rank = "Ouro";
-    cor = '#FEEBBD';
-  } else if (4000 <= valor && valor < 5000) {
-    rank = "Platina";
-    cor = '#9FF2F7';
-  } else if (5000 <= valor && valor < 6000) {
-    rank = "Esmeralda";
-    cor = '#64E8AB';
-  } else if (6000 <= valor && valor < 7000) {
-    rank = "Diamante";
-    cor = '#6DA6DF';
-  } else if (7000 <= valor && valor < 8000) {
-    rank = "Ascendente";
-    cor = '#ED4EF8';
-  } else if (8000 <= valor && valor < 9000) {
-    rank = "Imortal";
-    cor = '#FFA752';
-  } else if (9000 <= valor && valor <= 10000) {
-    rank = "Radiante";
-    cor = '#DFFFFF';
+function atualizarRank() {
+  let valor = (vitorias.value || 0) - (derrotas.value || 0);
+  if (valor <= 0) {
+    valor = 0;
+    total.textContent = valor;
+    total.style.color = 'white';
+  } else {
+    total.textContent = valor;
+    total.style.color = '#68EAAC';
   }
 
-  saidaXP.textContent = rank;
-  saidaXP.style.color = cor;
-});
+  let rank, cor, img;
+  if ((vitorias.value == 0 && derrotas.value == 0) || (!vitorias.value && !derrotas.value)) {
+    rank = "Undefined";
+    cor = "white";
+    img = "./Imagens/Unranked.webp";
+  }
+  else if (0 <= valor && valor < 10) {
+    rank = "Ferro";
+    cor = '#B09F9B';
+    img = "./Imagens/Iron.webp";
+  } else if (10 <= valor && valor < 20) {
+    rank = "Bronze";
+    cor = '#D08469';
+    img = "./Imagens/Bronze.webp";
+  } else if (20 <= valor && valor < 30) {
+    rank = "Prata";
+    cor = '#C4D0E8';
+    img = "./Imagens/Prata.webp";
+  } else if (30 <= valor && valor < 40) {
+    rank = "Ouro";
+    cor = '#FEEBBD';
+    img = "./Imagens/Ouro.webp";
+  } else if (40 <= valor && valor < 50) {
+    rank = "Platina";
+    cor = '#9FF2F7';
+    img = "./Imagens/Platina.webp";
+  } else if (50 <= valor && valor < 60) {
+    rank = "Esmeralda";
+    cor = '#64E8AB';
+    img = "./Imagens/Esmeralda.webp";
+  } else if (60 <= valor && valor < 70) {
+    rank = "Diamante";
+    cor = '#6DA6DF';
+    img = "./Imagens/Diamante.webp";
+  } else if (70 <= valor && valor < 80) {
+    rank = "Lendário";
+    cor = '#ED4EF8';
+    img = "./Imagens/Lendario.webp";
+  } else if (80 <= valor && valor < 90) {
+    rank = "Imortal";
+    cor = '#FFA752';
+    img = "./Imagens/Imortal.webp";
+  } else if (90 <= valor) {
+    rank = "Radiante";
+    cor = '#DFFFFF';
+    img = "./Imagens/Radiante.webp";
+  }
 
-function atualizarHeroi() {
-    // Recebe o nome e o nível do herói
-    let nome = prompt("Digite o nome do herói:");
-    // Atualiza os elementos HTML com os valores inseridos
-    document.getElementById("hero-name").textContent = nome;
-    // document.getElementById("hero-level").textContent = nivel;
+  saidaRank.textContent = rank;
+  saidaRank.style.color = cor;
+  imagens.src = img;
 }
 
-let entradaNome = document.querySelector("#hero-name");
-let saidaNome = document.querySelector(".hero-nametag");
+function limitar(limitador) {
+  if (this.value > limitador) {
+    this.value = limitador;} 
+  // Permite apenas números
+  this.value = this.value.replace(/[^0-9]/g, '');
+}
 
-entradaNome.addEventListener("input", () => {
-    saidaNome.innerText = entradaNome.value;
+vitorias.addEventListener('input', function () {
+  limitar.call(vitorias, 10000);
 });
 
+derrotas.addEventListener('input', function () {
+  limitar.call(derrotas, 10000);
+});
+
+vitorias.addEventListener("input", atualizarRank);
+derrotas.addEventListener("input", atualizarRank);

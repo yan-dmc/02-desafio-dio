@@ -6,6 +6,7 @@
     background-color: inherit;
     border: none;
     font-family: 'pixel', Courier, monospace;
+    font-size: 3vh;
 }
 
 @font-face {
@@ -20,164 +21,67 @@ body {
     height: 100vh;
 }
 
-.main {
+.rank-img {
     display: flex;
-    width: 100%;
+    justify-self: center;
     justify-content: center;
+    align-items: center;
+    background-color: rgba(137, 43, 226, 0);
+    width: 50vh;
+    height: 50vh;
 }
 
-.hero-box {
-    width: 60%;
-    position: relative;
+.img-box {
+    background-color: rgba(255, 0, 0, 0);
+    display: flex;
+    width: 100%;
+    height: 100%;
+    animation: flutuando infinite 1s alternate ease-in-out;
+}
+
+@keyframes flutuando {
+    0% {margin-bottom: 5vh};
+    100% {margin-bottom: 0vh};
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.rank-box {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(226, 43, 76, 0);
+    width: 50vh;
+    height: 50vh;
 }
 
 .box {
-    width: 30%;
-    height: 25vh;
-    display: flex;
-    position: relative;
-    background-color: rgb(75, 75, 75);
-    justify-content: center;
-    top: calc(50vh);
-    margin-right: 10vh;
-    font-size: 3vh;
+    width: 90%;
+    height: 90%;
+    background-color: #4b4b4b;
     border-radius: 2vh;
-    overflow: hidden;
-
-    -webkit-box-reflect: below 1vh linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2));
-
     
 }
 
-.hero-img {
-    position: absolute;
-    top: 20vh;
-    pointer-events: none;
-}
-
-.hero-nametag {
-    display: flex;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 15vh;
-    left: 27vh;
-    padding: 0 0 0 .7vh;
-    justify-content: center;
-    position: absolute;
-    font-size: 4vh;
-}
-
-.hero-img::after {
-    position: absolute;
-    display: inline-flex;
-    content: '';
-    bottom: 0vh;
-    left: 0vh;
-    width: 17vh;
-    height: 20vh;
-    color: black;
-    background-color: rgb(0, 0, 0);
-}
-
-.hero-img img {
-    width: 60vh;
-    transform: scaleX(-1);
-    pointer-events: none;
-
-}
-
-.hero-reflect {
-    position: absolute;
-    top: 80vh;
-    filter: blur(.7vh);
-    pointer-events: none;
-}
-
-.hero-reflect::after {
-    position: absolute;
-    display: inline-flex;
-    content: '';
-    top: 0vh;
-    left: 0vh;
-    width: 17vh;
-    height: 20vh;
-    color: black;
-    background-color: rgb(0, 0, 0);
-}
-
-.hero-reflect img {
-    width: 60vh;
-    transform: scale(-1, -1);
-    pointer-events: none;
-    
-    
-}
-
-.hero-info {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin: 0vh 2vh 0vh 2vh;
-}
-
-.hero-info-name {
-    display: flex;
-    width: 100%;
+.box-content {
     margin-top: 2vh;
-}
-
-.hero-name {
+    margin-left: 2vh;
     background-color: transparent;
-    width: 100%;
-    font-size: 2vh;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
 }
 
-#hero-name {
-    color: rgb(139, 255, 139);
-    width: 17.6vh;
-    font-size: 3vh;
+.box label, .box input, .box p {
+    background-color: transparent;
+    margin-bottom: 1vh;
+}
+
+.box input {
+    color: white;
     border: none;
     outline: none;
-}
-
-#rank-scroll {
-    position: absolute;
-    width: 100%;
-    height: 5vh;
-}
-
-input[type=range] {
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 5vh;
-    background-color: rgb(56, 56, 56);;
-    outline: none;
-}
-
-input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    outline: none;
-}
-
-input[type=range]::-webkit-slider-thumb{
-    top: 0;
-    width: 5vh;
-    height: 5vh;
-    margin: 0;
-    padding: 0;
-    border-radius: 50%;
-    background-color: rgb(150, 150, 150);
-    border: .3vh solid rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-#hero-level {
-    color: #B09F9B;
-    font-size: 3vh;
 }
 
 .footer {
@@ -194,27 +98,3 @@ input[type=range]::-webkit-slider-thumb{
     border-radius: 0vh 0vh 0vh 20vh;
 }
 
-
-@media (max-width: 900px) {
-    .box {
-        height: 30vh;
-    }
-}
-
-@media (max-width: 900px) {
-    .box {
-        height: 35vh;
-    }
-}
-
-@media (max-width: 550px) {
-    .hero-box {
-        display: none;
-    }
-
-    .box {
-        width: 100vh;
-        height: 25vh;
-        margin-left: 10vh;
-    }
-}
